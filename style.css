@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: #0e4f16;
+  font-size: 60px;
+  text-align: center;
+  padding-top: 50px;
+  font-weight: bold;
+}
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-right: 5px;
+  border: solid #d5d2d2;
+}
+button {
+  background-color: #0e4f16;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b8b3b;
+}
+span a {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: #848484;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+li {
+  list-style: none;
+  margin: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rodapePrincipal {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  position: relative;
+  background: #1f2821;
+  color: rgb(158, 158, 158);
+  padding: 3.5rem 0px;
+  min-height: calc(120px);
+  width: 100%;
+}
+.logoInicial img {
+  height: 60px;
+  width: 120px;
+  padding: 0px;
+}
+.img-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.img-rodape img {
+  height: 450px;
+  width: 450px;
+}
+
+.inputBusca {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+.inputBusca input {
+  width: 40%;
+}
+
+.identificacao {
+  font-weight: bold;
+  margin-top: 100px;
+}
