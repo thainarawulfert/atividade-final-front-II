@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 header {
   background-color: #ffffff;
@@ -104,4 +105,124 @@ li {
 .identificacao {
   font-weight: bold;
   margin-top: 100px;
+}
+
+#paginacao {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  --color: #3b8b3b;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 14px;
+  border: 1px solid;
+  color: var(--color);
+  z-index: 1;
+}
+
+.button::before,
+.button::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.button::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button:hover {
+  color: rgb(246, 246, 246);
+}
+
+.button:active {
+  filter: brightness(0.8);
+}
+
+.personagem {
+  border-bottom: #1dbe30 1px solid;
+  display: flex;
+  width: 40vw;
+  height: 32vh;
+  margin-bottom: 3rem;
+}
+
+.personagem img {
+  border-radius: 0.5rem 0 0 0.5rem;
+  width: 13rem;
+  height: 12rem;
+}
+
+.personagem span {
+  font-weight: 700;
+}
+
+.personagem p {
+  font-weight: 700;
+  color: #818181;
+  font-size: small;
+}
+
+#cardContainer {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 12rem;
+}
+.statusCirculo {
+  border-radius: 100%;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.statusPersonagem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusPersonagem div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nomePersonagem {
+  margin-top: 0.9rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.nomePersonagem article {
+  color: #12561a;
+  font-weight: 700;
+  font-size: 1.4rem;
 }

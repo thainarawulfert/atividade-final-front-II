@@ -1,6 +1,12 @@
-window.onload = () => [loadPagina("/character/?page=1")];
+window.onload = () => {
+  loadPagina("/character/?page=1");
+  contagemApi();
+};
 
 let informacoes;
+let anteriorPagina = null;
+let proximaPagina = null;
+
 const urlPrincipal = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
 });
@@ -9,6 +15,8 @@ function loadPagina(url, buscar = "") {
   const buscarNome = buscar ? `&name= ${buscar}` : "";
   urlPrincipal.get(url + buscarNome).then((res) => {
     const personagem = res.data;
+    anteriorPagina = res.data.info.prev;
+    proximaPagina = res.data.info.next;
     mostrarPersonagem(personagem);
   });
 }
@@ -76,4 +84,43 @@ function buscarPersonagens() {
   loadPagina("/character/?page=1", buscaP);
 }
 
-function paginacaoPrincipal() {}
+function paginacaoPrincipal(url) {
+  if (url != null) {
+    loadPagina(url);
+  }
+}
+
+const btnAnterior = document.getElementById("anterior-btn");
+const btnProximo = document.getElementById("proxima-btn");
+
+btnAnterior.addEventListener("click", () => {
+  paginacaoPrincipal(anteriorPagina, inputBusca.value);
+  window.scrollTo(0, 0);
+});
+btnProximo.addEventListener("click", () => {
+  paginacaoPrincipal(proximaPagina, inputBusca.value);
+  window.scrollTo(0, 0);
+});
+
+function contagemApi() {
+  const personagemTotal = document.getElementById("characterTotal");
+  const localizacaoTotal = document.getElementById("locationTotal");
+  const episodiosTotal = document.getElementById("episodeTotal");
+  urlPrincipal.get("/character").then((res) => {
+    const personagensQuantidade = res.data.info.count;
+
+    personagemTotal.textContent = "Personagens: " + personagensQuantidade;
+  });
+
+  urlPrincipal.get("/location").then((res) => {
+    const localizacaoQuantidade = res.data.info.count;
+
+    localizacaoTotal.textContent = "Localizações: " + localizacaoQuantidade;
+  });
+
+  urlPrincipal.get("/episode").then((res) => {
+    const episodiosQuantidade = res.data.info.count;
+
+    episodiosTotal.textContent = "Episódios: " + episodiosQuantidade;
+  });
+}
