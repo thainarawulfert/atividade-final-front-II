@@ -5,8 +5,9 @@ const urlPrincipal = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
 });
 
-function loadPagina(url) {
-  urlPrincipal.get(url).then((res) => {
+function loadPagina(url, buscar = "") {
+  const buscarNome = buscar ? `&name= ${buscar}` : "";
+  urlPrincipal.get(url + buscarNome).then((res) => {
     const personagem = res.data;
     mostrarPersonagem(personagem);
   });
@@ -50,7 +51,7 @@ async function listaPersonagens(personagem) {
         <span>${episodioNome}</span>
       </div>  
     </div>
-  </div>;`;
+  </div>`;
 }
 
 function criarPersonagens(criarPersonagem) {
@@ -66,3 +67,13 @@ function mostrarPersonagem(res) {
   informacoes = res.info;
   criarPersonagens(personagens);
 }
+
+const inputBusca = document.getElementById("buscarPersonagem");
+inputBusca.addEventListener("input", () => buscarPersonagens());
+
+function buscarPersonagens() {
+  const buscaP = inputBusca.value;
+  loadPagina("/character/?page=1", buscaP);
+}
+
+function paginacaoPrincipal() {}
